@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mitologi Inspira</title>
+<meta name="description" content="Mitologi Inspira adalah konsultan team development dan learning experience di Jakarta. program lima fase dari diagnostik organisasi hingga kemitraan pembelajaran berkelanjutan.">
+<meta name="theme-color" content="#1A1A1A">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mitologi Inspira">
+<meta property="og:title" content="Mitologi Inspira · We Make Learning Fun">
+<meta property="og:description" content="Program lima fase dari diagnostik organisasi hingga kemitraan pembelajaran berkelanjutan.">
+<meta property="og:image" content="icons/icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F1EC; --tint:#EAE7DF; --card:#FFFFFF; --ink:#1A1A1A; --muted:#6B6259; --line:#E1DED4;
+  --orange:#F7941D; --red:#E8431A; --gold:#A0702A; --red-text:#D5390F; --teal:#00A89C; --green:#56A038;
+  --radius:18px; --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(26,26,26,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:"Albert Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:16px;
+  padding-bottom:env(safe-area-inset-bottom)}
+h1,h2,h3{font-family:Montserrat,"Albert Sans",sans-serif;line-height:1.15}
+a{color:inherit}
+.wrap{max-width:480px;margin:0 auto;padding:0 22px}
+button{font:inherit;cursor:pointer}
+
+/* hero */
+.hero{background:linear-gradient(180deg,rgba(26,26,26,.22) 0%,rgba(26,26,26,.55) 45%,rgba(26,26,26,.92) 85%),url("images/hero.jpg") center/cover no-repeat,var(--ink);color:#fff;padding:calc(18px + env(safe-area-inset-top)) 0 26px;position:relative;overflow:hidden}
+.brand{display:flex;align-items:center;gap:10px;position:relative;z-index:1}
+.brand img{width:40px;height:40px;object-fit:contain}
+.brand b{font-family:Montserrat,"Albert Sans",system-ui,sans-serif;font-size:17px;letter-spacing:.2px;display:block}
+.brand span{font-size:12px;color:#FFC877;font-weight:600;letter-spacing:.4px}
+.hero h1{font-size:23px;margin:64px 0 8px;position:relative;z-index:1}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero p{color:#D6DADF;font-size:14px;position:relative;z-index:1}
+.quick{display:flex;gap:8px;margin-top:14px;position:relative;z-index:1}
+.quick a,.quick button{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;min-height:46px;border-radius:12px;
+  font-weight:600;font-size:14px;text-decoration:none;border:0}
+.btn-orange{background:var(--orange);color:var(--ink)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)!important}
+
+/* sections */
+section{padding:28px 0 4px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--red-text);margin-bottom:6px}
+h2{font-size:22px;margin-bottom:8px}
+.lead{color:var(--muted);font-size:15px;margin-bottom:16px}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line)}
+.about{padding:18px}
+.about p{font-size:15px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.badges span{font-size:12px;font-weight:600;padding:6px 10px;border-radius:999px;background:var(--tint);color:var(--ink)}
+.quote{margin-top:14px;padding:12px 14px;border-left:4px solid var(--orange);background:#FFF7EC;border-radius:0 12px 12px 0;
+  font-family:Montserrat,"Albert Sans",system-ui,sans-serif;font-weight:700;font-size:15px}
+
+/* fase */
+.track{display:flex;gap:6px;margin:4px 0 14px}
+.track i{flex:1;height:6px;border-radius:3px;background:var(--c)}
+.phase{margin-bottom:10px;overflow:hidden}
+.phase summary{list-style:none;display:flex;align-items:center;gap:14px;padding:14px 16px;cursor:pointer;min-height:64px}
+.phase summary::-webkit-details-marker{display:none}
+.num{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-family:Montserrat,"Albert Sans",system-ui,sans-serif;font-weight:800;
+  font-size:15px;color:#fff;background:var(--c)}
+.ph-t{flex:1}
+.ph-t b{font-family:Montserrat,"Albert Sans",system-ui,sans-serif;font-size:17px;display:block}
+.ph-t small{color:var(--muted);font-size:13px}
+.chev{flex:none;width:22px;height:22px;transition:transform .25s;color:var(--muted)}
+.phase[open] .chev{transform:rotate(180deg)}
+.ph-body{padding:0 16px 16px;font-size:15px}
+.ph-body p{margin-bottom:10px}
+.benefit{display:flex;gap:8px;background:var(--tint);border-radius:12px;padding:10px 12px;font-size:14px}
+.benefit b{color:var(--c);white-space:nowrap}
+.areas{list-style:none;margin:0 0 10px;font-size:14px}
+.areas li{position:relative;padding-left:14px;margin-bottom:3px}
+.areas li::before{content:"";position:absolute;left:1px;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--c)}
+.note{font-size:13px;color:var(--muted);text-align:center;margin-top:6px}
+
+/* video + galeri */
+.video{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;background:#0D1B2A;box-shadow:var(--shadow)}
+.video img,.video iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.video button{position:absolute;inset:0;width:100%;border:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.45));display:grid;place-items:center}
+.play{width:52px;height:52px;border-radius:50%;background:var(--red);display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.35);transition:transform .15s}
+.video button:active .play{transform:scale(.94)}
+.play svg{width:22px;height:22px;color:#fff}
+.yt-alt{display:block;text-align:center;font-size:13px;color:var(--muted);margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.grid button{aspect-ratio:1;border:0;padding:0;border-radius:12px;overflow:hidden;background:var(--line)}
+.grid img{width:100%;height:100%;object-fit:cover;display:block}
+.overlay.lb{align-items:center;padding:16px}
+.overlay.lb img{max-width:100%;max-height:85vh;border-radius:14px}
+
+/* galeri */
+
+/* links */
+.links{display:grid;gap:10px}
+.link{display:flex;align-items:center;gap:14px;padding:14px 16px;text-decoration:none;min-height:68px;transition:transform .15s}
+.link:active{transform:scale(.98)}
+.ic{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--c);color:#fff}
+.ic svg{width:22px;height:22px}
+.lk-t{flex:1;min-width:0}
+.lk-t b{display:block;font-weight:600}
+.lk-t small{color:var(--muted);font-size:13px}
+.arrow{color:var(--muted)}
+.link.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+.link.primary small,.link.primary .arrow{color:#C9CED4}
+.link.tipe{background:linear-gradient(135deg,#F1E7FF 0%,#E6D6FA 100%);border-color:#C6A8EC}
+.link.tipe .lk-t small{color:#6E4FA0}
+.link.tipe .arrow{color:#8A4FE0}
+
+footer.wrap{padding:6px 22px calc(40px + env(safe-area-inset-bottom));text-align:center;font-size:13px;color:var(--muted)}
+footer b{color:var(--ink)}
+.save-row{display:flex;gap:8px;margin:18px 0 32px}
+.save-row button,.save-row a{flex:1;min-height:46px;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:600;
+  font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;color:var(--ink)}
+
+/* sheet */
+.overlay{position:fixed;inset:0;background:rgba(10,12,14,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:calc(16px + env(safe-area-inset-top)) 18px calc(16px + env(safe-area-inset-bottom));
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.overlay.show{display:flex;animation:fade .2s}
+.sheet{background:#fff;width:100%;max-width:420px;border-radius:22px;padding:24px 20px 18px;box-shadow:0 20px 50px rgba(0,0,0,.25);
+  max-height:100%;overflow:auto;animation:pop .25s cubic-bezier(.2,.8,.2,1)}
+.grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 14px}
+.sheet h3{font-size:20px;margin-bottom:6px}
+.sheet .sub{color:var(--muted);font-size:14px;margin-bottom:16px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:5px}
+.field input{width:100%;height:50px;border-radius:12px;border:1.5px solid var(--line);padding:0 14px;font:inherit;font-size:16px;background:var(--bg)}
+.field input:focus{outline:none;border-color:var(--orange);background:#fff}
+.phone{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);overflow:hidden}
+.phone:focus-within{border-color:var(--orange);background:#fff}
+.phone span{padding:0 4px 0 14px;font-weight:600;color:var(--muted)}
+.phone input{border:0;background:transparent;padding-left:4px}
+.err{color:var(--red);font-size:13px;margin-top:4px;display:none}
+.cta{width:100%;height:52px;border:0;border-radius:14px;background:var(--orange);color:var(--ink);font-weight:700;font-size:16px;margin-top:6px}
+.cta:disabled{opacity:.6}
+.skip{display:block;width:100%;background:none;border:0;color:var(--muted);font-size:14px;padding:12px;margin-top:4px}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:end}
+.opt{font-weight:400;color:var(--muted)}
+.privacy{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+.steps{display:grid;gap:10px;margin-top:6px}
+.step{display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;border:1.5px solid var(--line);background:#fff;text-align:left;
+  width:100%;text-decoration:none;color:var(--ink)}
+.step .ic{width:38px;height:38px}
+.step b{display:block;font-size:15px}
+.step small{color:var(--muted);font-size:13px}
+.step.done{border-color:var(--green);background:#F3FAEF}
+.ios{display:none;background:var(--bg);border-radius:14px;padding:12px 14px;font-size:14px;margin-top:10px}
+.ios ol{margin-left:18px}
+.ios svg{width:16px;height:16px;vertical-align:-3px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(120px);background:var(--ink);color:#fff;
+  padding:12px 18px;border-radius:12px;font-size:14px;z-index:60;transition:transform .3s;max-width:90vw;visibility:hidden}
+.toast.show{transform:translateX(-50%) translateY(0);visibility:visible}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <img src="images/logo.png" alt="Logo Mitologi Inspira">
+      <div><b>Mitologi Inspira</b><span>WE MAKE LEARNING FUN</span></div>
+    </div>
+    <h1>Tim yang <em>nyambung</em> tidak lahir dari satu sesi.</h1>
+    <p>Konsultan team development dan learning experience di Jakarta. Kami merancang perjalanan, bukan pelatihan sekali jalan.</p>
+    <div class="quick">
+      <a class="btn-orange" id="waTop" href="#">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg>
+        Chat WhatsApp</a>
+      <button class="btn-ghost" id="saveTop">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>
+        Simpan di HP</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <div class="eyebrow">Tentang kami</div>
+    <div class="card about">
+      <p>Mitologi Inspira adalah konsultan team development dan learning experience di Jakarta. Selama lebih dari 15 tahun kami membantu perusahaan membangun tim yang selaras dan bersinergi, melalui program lima fase dari diagnostik organisasi hingga kemitraan pembelajaran berkelanjutan. Kami vendor resmi berlisensi MBTI untuk Indonesia. Sinergi tim tidak dibentuk dari satu sesi.</p>
+      <div class="badges"><span>15+ tahun</span><span>Vendor resmi MBTI</span><span>Expert praktisi</span><span>Experiential &amp; gamified</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Lihat kami beraksi</div>
+    <div class="video" id="video">
+      <img id="videoPoster" src="images/video-poster.jpg" alt="Video profil Mitologi Inspira">
+      <button id="videoPlay" aria-label="Putar video profil"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.2 5.6v12.8a.8.8 0 0 0 1.2.7l10.2-6.4a.8.8 0 0 0 0-1.4L9.4 4.9a.8.8 0 0 0-1.2.7Z" transform="translate(-1.6 0)"/></svg></span></button>
+    </div>
+    <a class="yt-alt" id="ytAlt" href="#" target="_blank" rel="noopener" hidden>Video tidak tampil? Tonton di YouTube</a>
+  </section>
+
+  <section>
+    <div class="eyebrow">5 Fase Team Development</div>
+    <h2>Lima fase, satu perjalanan</h2>
+    <p class="lead">Ketuk tiap fase untuk melihat isi dan manfaatnya.</p>
+    <div class="track" aria-hidden="true">
+      <i style="--c:var(--red)"></i><i style="--c:var(--orange)"></i><i style="--c:var(--teal)"></i><i style="--c:var(--green)"></i><i style="--c:var(--gold)"></i>
+    </div>
+
+    <details class="card phase" style="--c:var(--red)">
+      <summary><span class="num">01</span><span class="ph-t"><b>Diagnose</b><small>Diagnosa Alignment Organisasi</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <div class="ph-body">
+        <p>Asesmen organisasi lewat Ansaka OAM untuk menemukan di mana strategi, kepemimpinan, dan eksekusi tim belum selaras.</p>
+        <div class="benefit"><b>Manfaat</b><span>Akar masalah terlihat sebelum memilih intervensi, jadi anggaran pengembangan tidak salah sasaran.</span></div>
+      </div>
+    </details>
+
+    <details class="card phase" style="--c:var(--orange)">
+      <summary><span class="num">02</span><span class="ph-t"><b>Discover</b><small>Assessment Individual</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <div class="ph-body">
+        <p>Asesmen individu dan interaksi tim lewat Official MBTI atau Lakon Profile untuk mengenali preferensi, kekuatan, dan cara tiap orang bekerja.</p>
+        <div class="benefit"><b>Manfaat</b><span>Tim punya bahasa bersama untuk memahami perbedaan, bukan saling menebak.</span></div>
+      </div>
+    </details>
+
+    <details class="card phase" style="--c:var(--teal)">
+      <summary><span class="num">03</span><span class="ph-t"><b>Synergy</b><small>Applied MBTI in Work &amp; Team Synergy</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <div class="ph-body">
+        <p>Pelatihan sinergi dan kolaborasi yang experiential dan gamified, dibangun dari hasil discovery.</p>
+        <div class="benefit"><b>Manfaat</b><span>Komunikasi lebih nyambung, perbedaan jadi kekuatan, kolaborasi lintas divisi lebih lancar.</span></div>
+      </div>
+    </details>
+
+    <details class="card phase" style="--c:var(--green)">
+      <summary><span class="num">04</span><span class="ph-t"><b>Solution</b><small>Core Skills Training</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <div class="ph-body">
+        <p>Pengembangan kompetensi di lima core area:</p>
+        <ul class="areas">
+          <li>Communication, Empathy &amp; Active Listening</li>
+          <li>Leadership, Vision &amp; Social Influence</li>
+          <li>Mental Resilience, Flexibility &amp; Emotional Agility</li>
+          <li>Creative Thinking, Innovation &amp; Problem Solving</li>
+          <li>Team Alignment &amp; Collaborative Productivity</li>
+        </ul>
+        <div class="benefit"><b>Manfaat</b><span>Kompetensi dibangun sesuai kebutuhan nyata tim, bukan dari katalog topik lepas.</span></div>
+      </div>
+    </details>
+
+    <details class="card phase" style="--c:var(--gold)">
+      <summary><span class="num">05</span><span class="ph-t"><b>Growth</b><small>LDaaS · Learning partnership</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <div class="ph-body">
+        <p>Kemitraan pembelajaran berkelanjutan: coaching, penguatan berkala, dan evaluasi perkembangan tim.</p>
+        <div class="benefit"><b>Manfaat</b><span>Perubahan perilaku bertahan, tidak menguap beberapa minggu setelah kelas.</span></div>
+      </div>
+    </details>
+
+  </section>
+
+  <section>
+    <div class="eyebrow">Galeri</div>
+    <div class="grid" id="gallery"><button data-full="images/gallery-1.jpg" aria-label="Perbesar foto 1"><img src="images/gallery-1.jpg" alt="Suasana kelas Mitologi Inspira 1" loading="lazy" width="400" height="400"></button><button data-full="images/gallery-2.jpg" aria-label="Perbesar foto 2"><img src="images/gallery-2.jpg" alt="Suasana kelas Mitologi Inspira 2" loading="lazy" width="400" height="400"></button><button data-full="images/gallery-3.jpg" aria-label="Perbesar foto 3"><img src="images/gallery-3.jpg" alt="Suasana kelas Mitologi Inspira 3" loading="lazy" width="400" height="400"></button><button data-full="images/gallery-4.jpg" aria-label="Perbesar foto 4"><img src="images/gallery-4.jpg" alt="Suasana kelas Mitologi Inspira 4" loading="lazy" width="400" height="400"></button><button data-full="images/gallery-5.jpg" aria-label="Perbesar foto 5"><img src="images/gallery-5.jpg" alt="Suasana kelas Mitologi Inspira 5" loading="lazy" width="400" height="400"></button><button data-full="images/gallery-6.jpg" aria-label="Perbesar foto 6"><img src="images/gallery-6.jpg" alt="Suasana kelas Mitologi Inspira 6" loading="lazy" width="400" height="400"></button></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Jelajahi</div>
+    <div class="links">
+      <a class="card link primary" data-link="needs" href="#" target="_blank" rel="noopener" style="--c:var(--orange)">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1Z"/><path d="M8 6H6a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-2"/><path d="m9 14 2 2 4-4"/></svg></span>
+        <span class="lk-t"><b>Isi Form Kebutuhan Tim</b><small>Ceritakan tantangan tim, kami siapkan usulan</small></span><span class="arrow">›</span></a>
+      <a class="card link" id="waLink" href="#" style="--c:#25D366">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg></span>
+        <span class="lk-t"><b>Chat via WhatsApp</b><small>Tanya langsung ke tim kami</small></span><span class="arrow">›</span></a>
+      <a class="card link" data-link="website" href="#" target="_blank" rel="noopener" style="--c:var(--orange)">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+        <span class="lk-t"><b>Website Mitologi Inspira</b><small>Program, klien, dan artikel</small></span><span class="arrow">›</span></a>
+      <a class="card link" data-link="ansaka" href="#" target="_blank" rel="noopener" style="--c:#0D1B2A">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+        <span class="lk-t"><b>Ansaka</b><small>Diagnostik keselarasan organisasi</small></span><span class="arrow">›</span></a>
+      <a class="card link" data-link="lakon" href="#" target="_blank" rel="noopener" style="--c:var(--teal)">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+        <span class="lk-t"><b>Lakon</b><small>Asesmen minat, potensi, dan peran</small></span><span class="arrow">›</span></a>
+      <a class="card link" data-link="instagram" href="#" target="_blank" rel="noopener" style="--c:var(--red)">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
+        <span class="lk-t"><b>Instagram</b><small>@mitologiinspira</small></span><span class="arrow">›</span></a>
+      <a class="card link tipe" href="tipe.html" style="--c:#8A4FE0">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8Z"/></svg></span>
+        <span class="lk-t"><b>Kenali Tipemu</b><small>Doa 16 tipe MBTI &amp; 24 Paraga Lakon</small></span><span class="arrow">›</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="save-row">
+    <button id="installBtm">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
+      Pasang App</button>
+    <a href="mitologi-inspira.vcf" download>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+      Simpan Kontak</a>
+  </div>
+  <p><b>PT. Ansarmedia Edukreasi Semesta</b><br>Centennial Tower Lt. 29 Unit D-F, Jl. Jend. Gatot Subroto Kav. 24-25, Jakarta Selatan</p>
+  <p style="margin-top:8px"><a href="mailto:sales@mitologiinspira.com">sales@mitologiinspira.com</a></p>
+</footer>
+
+<!-- Sheet: lead + save -->
+<div class="overlay" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet">
+
+    <div id="stepForm">
+      <h3 id="sheetTitle">Kenalan dulu, yuk</h3>
+      <p class="sub">Isi data singkat untuk mulai jelajahi app, dari cerita program kami sampai informasi soal tipe kepribadianmu.</p>
+      <form id="leadForm" novalidate>
+        <div class="field"><label for="fName">Nama</label><input id="fName" autocomplete="name" required></div>
+        <div class="field"><label for="fPhone">Nomor WhatsApp</label>
+          <div class="phone"><span>+62</span><input id="fPhone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="812 3456 7890" required></div>
+          <div class="err" id="phoneErr">Masukkan nomor WhatsApp yang valid.</div></div>
+        <div class="row2">
+          <div class="field"><label for="fCo">Perusahaan <span class="opt">(opsional)</span></label><input id="fCo" autocomplete="organization"></div>
+          <div class="field"><label for="fJob">Jabatan <span class="opt">(opsional)</span></label><input id="fJob" autocomplete="organization-title"></div>
+        </div>
+        <div class="field"><label for="fMail">Email <span class="opt">(opsional)</span></label><input id="fMail" type="email" inputmode="email" autocomplete="email" placeholder="nama@perusahaan.com">
+          <div class="err" id="mailErr">Format email belum benar.</div></div>
+        <button class="cta" id="submitBtn" type="submit">Lanjut</button>
+      </form>
+      <p class="privacy">Nomor Anda hanya dipakai Mitologi Inspira untuk menghubungi Anda.</p>
+      <button class="skip" data-close id="skipForm" hidden>Nanti saja</button>
+    </div>
+
+    <div id="stepSave" hidden>
+      <h3>Terima kasih, <span id="hiName"></span>!</h3>
+      <p class="sub">Supaya kami mudah ditemukan lagi:</p>
+      <div class="steps">
+        <button class="step" id="installStep" style="--c:var(--orange)">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
+          <span><b>Pasang di layar utama</b><small id="installHint">Jadi ikon app di HP Anda</small></span></button>
+        <a class="step" id="contactStep" href="mitologi-inspira.vcf" download style="--c:var(--teal)">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+          <span><b>Simpan kontak</b><small>Masuk ke buku telepon</small></span></a>
+        <a class="step" id="waStep" href="#" style="--c:#25D366">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg></span>
+          <span><b>Sapa kami di WhatsApp</b><small>Pesan sudah disiapkan</small></span></a>
+      </div>
+      <div class="ios" id="iosHelp">
+        <b>Di iPhone:</b>
+        <ol>
+          <li>Ketuk tombol <b>Share</b> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M8 7l4-4 4 4M5 12v8h14v-8"/></svg> di bawah layar Safari</li>
+          <li>Pilih <b>Add to Home Screen</b></li>
+          <li>Ketuk <b>Add</b></li>
+        </ol>
+      </div>
+      <button class="skip" data-close>Selesai, lihat isi</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay lb" id="lb"><img id="lbImg" alt=""></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ KONFIGURASI: ubah di sini saja ============ */
+const CONFIG = {
+  waNumber: "6282126373601",               // nomor WA tujuan, format 62...
+  popupAktif: true,                        // true = popup data muncul otomatis dan tidak bisa ditutup sebelum diisi. false = mati
+  videoId: "_mGEsfblYWk",                  // ID video YouTube (bagian setelah v= atau youtu.be/ di URL)
+  sheetEndpoint: "",                       // URL Web App Google Apps Script (lihat README)
+  links: {
+    website:   "https://mitologiinspira.com",
+    ansaka:    "https://ansaka.com",
+    lakon:     "https://lakonprofile.com",
+    needs:     "https://os.mitologiinspira.com/needs",
+    instagram: "https://instagram.com/mitologiinspira"
+  },
+  promptDelayMs: 500                       // jeda sebelum form muncul (muncul terus sampai pengunjung mengisi)
+};
+/* ======================================================== */
+
+const $ = s => document.querySelector(s);
+const store = {
+  get(k){ try{ return localStorage.getItem(k) }catch(e){ return null } },
+  set(k,v){ try{ localStorage.setItem(k,v) }catch(e){} }
+};
+const params = new URLSearchParams(location.search);
+const source = params.get("src") || store.get("mi_src") || "direct";
+store.set("mi_src", source);
+
+const isStandalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+const ua = navigator.userAgent;
+const isIOS = /iphone|ipad|ipod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+const inAppBrowser = /Instagram|FBAN|FBAV|Line\/|TikTok/i.test(ua);
+
+// links
+document.querySelectorAll("[data-link]").forEach(a => { a.href = CONFIG.links[a.dataset.link] || "#"; });
+
+function waUrl(name, co){
+  let msg = "Halo Mitologi Inspira";
+  if(name) msg += `, saya ${name}` + (co ? ` dari ${co}` : "");
+  msg += ". Saya ingin tahu lebih lanjut tentang program team development Mitologi Inspira.";
+  return `https://wa.me/${CONFIG.waNumber}?text=${encodeURIComponent(msg)}`;
+}
+const lead = JSON.parse(store.get("mi_lead") || "null");
+[$("#waTop"), $("#waLink"), $("#waStep")].forEach(a => a.href = waUrl(lead?.name, lead?.company));
+
+function toast(t){ const el = $("#toast"); el.textContent = t; el.classList.add("show"); setTimeout(()=>el.classList.remove("show"), 3200); }
+
+// sheet
+const sheet = $("#sheet");
+function openSheet(step){
+  $("#stepForm").hidden = step !== "form";
+  $("#stepSave").hidden = step !== "save";
+  sheet.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+// Popup tidak bisa ditutup sebelum form diisi. Setelah itu boleh ditutup.
+let submitted = !!store.get("mi_lead") || !CONFIG.popupAktif;
+if(!CONFIG.popupAktif) $("#skipForm").hidden = false;
+function closeSheet(){ if(!submitted) return; sheet.classList.remove("show"); document.body.style.overflow = ""; store.set("mi_seen", "1"); }
+sheet.addEventListener("click", e => { if(e.target === sheet || e.target.hasAttribute("data-close")) closeSheet(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape" && submitted) closeSheet(); });
+
+// install
+let deferredPrompt = null;
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferredPrompt = e; });
+window.addEventListener("appinstalled", () => { $("#installStep").classList.add("done"); toast("App terpasang di layar utama."); });
+
+async function doInstall(){
+  if(isStandalone){ toast("Anda sudah membuka versi app."); return; }
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    const r = await deferredPrompt.userChoice;
+    if(r.outcome === "accepted") $("#installStep").classList.add("done");
+    deferredPrompt = null;
+  } else if(isIOS){
+    $("#iosHelp").style.display = "block";
+    $("#iosHelp").scrollIntoView({behavior:"smooth", block:"nearest"});
+  } else if(inAppBrowser){
+    toast("Buka halaman ini di Chrome atau Safari untuk memasang app.");
+  } else {
+    toast("Buka menu browser (⋮), lalu pilih \"Tambahkan ke layar utama\".");
+  }
+}
+$("#installStep").addEventListener("click", doInstall);
+$("#installBtm").addEventListener("click", doInstall);
+$("#saveTop").addEventListener("click", () => openSheet(store.get("mi_lead") ? "save" : "form"));
+$("#contactStep").addEventListener("click", () => $("#contactStep").classList.add("done"));
+$("#waStep").addEventListener("click", () => $("#waStep").classList.add("done"));
+if(isIOS){ $("#installHint").textContent = "Lewat Share, lalu Add to Home Screen"; }
+
+// form
+function normPhone(v){
+  let d = v.replace(/\D/g, "");
+  if(d.startsWith("62")) d = d.slice(2);
+  if(d.startsWith("0")) d = d.slice(1);
+  return d;
+}
+$("#leadForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const name = $("#fName").value.trim();
+  const phone = normPhone($("#fPhone").value);
+  const company = $("#fCo").value.trim();
+  const jabatan = $("#fJob").value.trim();
+  const email = $("#fMail").value.trim();
+  const okPhone = /^8\d{7,11}$/.test(phone);
+  const okMail = !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  $("#phoneErr").style.display = okPhone ? "none" : "block";
+  $("#mailErr").style.display = okMail ? "none" : "block";
+  if(!name){ $("#fName").focus(); return; }
+  if(!okPhone){ $("#fPhone").focus(); return; }
+  if(!okMail){ $("#fMail").focus(); return; }
+
+  const data = { name, phone: "62" + phone, company, jabatan, email, source, page: location.href, ua: ua.slice(0,180), ts: new Date().toISOString() };
+  if(CONFIG.sheetEndpoint){
+    // text/plain supaya tidak memicu CORS preflight ke Apps Script
+    fetch(CONFIG.sheetEndpoint, { method:"POST", mode:"no-cors", headers:{ "Content-Type":"text/plain;charset=utf-8" }, body: JSON.stringify(data) })
+      .catch(() => store.set("mi_pending", JSON.stringify(data)));
+  }
+  submitted = true;
+  store.set("mi_lead", JSON.stringify({ name, company }));
+  store.set("mi_seen", "1");
+  $("#hiName").textContent = name.split(" ")[0];
+  [$("#waTop"), $("#waLink"), $("#waStep")].forEach(a => a.href = waUrl(name, company));
+  openSheet("save");
+});
+
+// kirim ulang jika sebelumnya gagal (misalnya sinyal putus)
+const pending = store.get("mi_pending");
+if(pending && CONFIG.sheetEndpoint && navigator.onLine){
+  fetch(CONFIG.sheetEndpoint, { method:"POST", mode:"no-cors", headers:{ "Content-Type":"text/plain;charset=utf-8" }, body: pending })
+    .then(() => store.set("mi_pending", ""));
+}
+
+// tampilkan form pada kunjungan pertama
+if(params.has("reset")){ ["mi_lead","mi_seen","mi_pending"].forEach(k => { try{ localStorage.removeItem(k) }catch(e){} }); }
+if(CONFIG.popupAktif && !store.get("mi_lead")){
+  setTimeout(() => openSheet("form"), CONFIG.promptDelayMs);
+}
+
+// video (dimuat hanya saat diketuk, hemat kuota)
+(function(){
+  const id = CONFIG.videoId;
+  if(id){
+    const p = $("#videoPoster"), fallback = p.src;
+    p.onerror = () => { p.onerror = null; p.src = fallback; };
+    p.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+  }
+  if(id){ const a = $("#ytAlt"); a.href = `https://youtu.be/${id}`; a.hidden = false; }
+  $("#videoPlay").addEventListener("click", () => {
+    if(!id){ toast("Video segera hadir."); return; }
+    const f = document.createElement("iframe");
+    f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
+    f.title = "Video profil Mitologi Inspira";
+    f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    f.referrerPolicy = "strict-origin-when-cross-origin";
+    f.allowFullscreen = true;
+    $("#video").replaceChildren(f);
+  });
+})();
+
+// galeri: ketuk untuk memperbesar
+$("#gallery").addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  $("#lbImg").src = b.dataset.full; $("#lb").classList.add("show"); document.body.style.overflow = "hidden";
+});
+$("#lb").addEventListener("click", () => { $("#lb").classList.remove("show"); document.body.style.overflow = ""; });
+
+// service worker
+if("serviceWorker" in navigator && location.protocol === "https:"){
+  navigator.serviceWorker.register("sw.js");
+}
+</script>
+</body>
+</html>
