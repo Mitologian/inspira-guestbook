@@ -33,7 +33,7 @@ function doPost(e) {
   }
 }
 
-function doGet() { return out({ ok: true, service: "mitologi-link-leads" }); }
+function doGet() { return out({ ok: true, service: "inspira-digital-guestbook" }); }
 
 function out(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
