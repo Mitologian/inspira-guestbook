@@ -326,7 +326,7 @@ footer.wrap{padding:20px 22px calc(40px + env(safe-area-inset-bottom));text-alig
       <div class="qr"><img id="voucherQr" alt="QR voucher Lakon IOITE" width="280" height="280" loading="lazy"></div>
       <p class="daylabel" id="voucherDayLabel">QR &amp; link di bawah untuk Hari 1 · 8 Okt, keduanya menuju halaman yang sama.</p>
       <div class="price"><span class="old">Rp199.000</span><span class="new">Rp99.000</span></div>
-      <div class="code">IOITE50</div>
+      <div class="code" id="voucherCode">IOITE-D1</div>
       <p class="quota">Khusus <b>20 voucher per hari</b>, diambil langsung di booth selama expo berlangsung.</p>
       <div class="actions">
         <a class="primary" id="voucherLink" href="#" target="_blank" rel="noopener">Buka Link Voucher</a>
@@ -436,7 +436,8 @@ const store = { get(k){ try{ return localStorage.getItem(k) }catch(e){ return nu
 const CONFIG = {
   waNumber: "6282126373601",                // nomor WA tujuan, sama dengan index.html
   sheetEndpoint: "https://script.google.com/macros/s/AKfycbxEXzn42eDTramxXt9sgWNtynJ6jaZiSbDhK_kEfBIHdTCV2zizBs-HtmRA1VoYRl943A/exec",// pakai URL Apps Script yang sama dengan index.htmlTautan Web App Apps Script penerima guestbook
-  voucherUrl: "https://lakonprofile.com/?promo=IOITE50&src=ioite",
+  // QR, tombol, dan kode voucher mengikuti booth.html?hari=N (kode IOITE-D1 sampai IOITE-D4 diatur di booth.html)
+  voucherPage: "booth.html",
   // Ganti tanggal/jam di sini begitu jadwal panggung sudah fix dari panitia.
   stage: {
     synergy:  { title:"Team Synergy and Personality", when:"2026-10-09T13:00:00+07:00", fixed:true,  label:"Hari 2, 9 Okt · 13.00 WIB (perkiraan)" },
@@ -630,11 +631,12 @@ function addToCalendar(key){
 }
 $$('[data-cal]').forEach(btn => btn.addEventListener("click", () => { if(!btn.disabled) addToCalendar(btn.dataset.cal); }));
 
-/* ---- voucher (QR & link sama-sama menuju voucherUrl, bisa dipilih per hari) ---- */
+/* ---- voucher (QR, tombol, dan kode sama-sama mengikuti hari yang dipilih, menuju booth.html?hari=N) ---- */
 const VDAY_LABEL = { 1:"Hari 1 · 8 Okt", 2:"Hari 2 · 9 Okt", 3:"Hari 3 · 10 Okt", 4:"Hari 4 · 11 Okt" };
 let voucherDay = 1;
 function renderVoucher(){
-  const url = CONFIG.voucherUrl + "&day=" + voucherDay;
+  const url = new URL(CONFIG.voucherPage + "?hari=" + voucherDay, location.href).href; // alamat lengkap, agar bisa dipindai HP lain
+  $("#voucherCode").textContent = "IOITE-D" + voucherDay;
   // QR dibuat langsung di HP (vendor/qrcode.js), tanpa layanan luar, tetap jalan saat sinyal booth lemah
   try{ const q = qrcode(0, "M"); q.addData(url); q.make(); $("#voucherQr").src = q.createDataURL(8, 4); }
   catch(e){ $("#voucherQr").alt = "QR tidak bisa dimuat. Ketuk tombol di bawah untuk membuka voucher."; }
