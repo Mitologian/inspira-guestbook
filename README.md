@@ -11,7 +11,6 @@ Pengganti Linktree dan flyer cetak. Pengunjung scan QR, mengisi nama dan nomor W
 | `icons/` | Ikon app (sementara). Ganti dengan logo resmi, ukuran dan nama file sama |
 | `mitologi-inspira.vcf` | Kartu kontak untuk tombol "Simpan Kontak" |
 | `apps-script.gs` | Penerima lead ke Google Sheet |
-| `qr-mitologi-link.png` | QR siap cetak ke `https://link.mitologiinspira.com/?src=qr` |
 | `CNAME`, `.nojekyll` | Untuk GitHub Pages dengan subdomain |
 
 ## 1. Upload ke GitHub Pages
@@ -69,4 +68,4 @@ Parameter `?src=` tercatat di kolom "Sumber QR". Buat QR berbeda per flyer atau 
 - **Android (Chrome, Samsung Internet):** tombol "Pasang di layar utama" memunculkan dialog instal asli.
 - **iPhone:** Apple tidak mengizinkan dialog instal otomatis. Halaman menampilkan panduan 3 langkah (Share → Add to Home Screen) dan harus dibuka di Safari.
 - **Browser dalam aplikasi** (Instagram, TikTok, Facebook) tidak bisa memasang app. Pengunjung diminta membuka di Chrome atau Safari. Scan dari kamera HP langsung membuka browser biasa, jadi aman.
-- Form bisa dilewati ("Lihat dulu tanpa mengisi") supaya pengunjung tidak kabur. Form tidak muncul lagi setelah itu, tapi tetap bisa dibuka dari tombol "Simpan di HP".
+- Dengan `popupAktif: false`, form hanya muncul lewat tombol "Simpan di HP" dan bisa ditutup tanpa diisi.

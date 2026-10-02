@@ -8,7 +8,7 @@ const SHEET_IOITE_CADANGAN = "Waiting List Cadangan IOITE";
 
 function doPost(e) {
   const lock = LockService.getScriptLock();
-  lock.tryLock(10000);
+  if (!lock.tryLock(10000)) return out({ ok: false, error: "busy" });
   try {
     const d = JSON.parse(e.postData.contents || "{}");
     const phone = String(d.phone || "").replace(/\D/g, "");
