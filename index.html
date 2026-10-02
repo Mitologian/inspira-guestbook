@@ -387,7 +387,7 @@ footer b{color:var(--ink)}
 /* ============ KONFIGURASI: ubah di sini saja ============ */
 const CONFIG = {
   waNumber: "6282126373601",               // nomor WA tujuan, format 62...
-  popupAktif: false,                       // true = popup data muncul otomatis dan tidak bisa ditutup sebelum diisi. false = mati
+  popupAktif: true,                        // true = popup data muncul otomatis dan tidak bisa ditutup sebelum diisi. false = mati
   videoId: "_mGEsfblYWk",                  // ID video YouTube (bagian setelah v= atau youtu.be/ di URL)
   sheetEndpoint: "",                       // URL Web App Google Apps Script (lihat README)
   links: {
@@ -516,7 +516,15 @@ if(pending && CONFIG.sheetEndpoint && navigator.onLine){
 
 // tampilkan form pada kunjungan pertama
 if(params.has("reset")){ ["mi_lead","mi_seen","mi_pending"].forEach(k => { try{ localStorage.removeItem(k) }catch(e){} }); }
-if(CONFIG.popupAktif && !store.get("mi_lead")){
+
+// Akses khusus: tambahkan ?akses=mitologi2026 di url untuk lewati form tanpa mengubah popupAktif.
+// Sekali dipakai, tersimpan di HP itu (localStorage) sehingga tidak perlu diulang setiap buka.
+const BYPASS_CODE = "mitologi2026"; // ganti kapan saja, hanya Anda yang tahu nilainya
+if(params.get("akses") === BYPASS_CODE){ store.set("mi_bypass", "1"); }
+const bypassed = store.get("mi_bypass") === "1";
+if(bypassed){ submitted = true; }
+
+if(CONFIG.popupAktif && !store.get("mi_lead") && !bypassed){
   setTimeout(() => openSheet("form"), CONFIG.promptDelayMs);
 }
 
