@@ -110,7 +110,7 @@ h2{font-size:21px;margin-bottom:8px}
 .voucher{padding:20px;text-align:center}
 .voucher .daytab{margin-bottom:16px}
 .voucher .qr{width:100%;max-width:280px;aspect-ratio:1;margin:0 auto 12px;border-radius:16px;border:1px solid var(--line);overflow:hidden;background:#fff}
-.voucher .qr img{width:100%;height:100%;display:block}
+.voucher .qr img{width:100%;height:100%;display:block;image-rendering:pixelated}
 .voucher .daylabel{font-size:12.5px;color:var(--muted);margin-bottom:10px}
 .voucher .price{margin:8px 0}
 .voucher .old{color:var(--muted);text-decoration:line-through;font-size:15px;margin-right:8px}
@@ -426,6 +426,7 @@ footer.wrap{padding:20px 22px calc(40px + env(safe-area-inset-bottom));text-alig
 <div class="toast" id="toast"></div>
 
 <script src="leads.js"></script>
+<script src="vendor/qrcode.js"></script>
 <script>
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
@@ -444,6 +445,15 @@ const CONFIG = {
 };
 /* ======================================= */
 
+// Pengaman: jika leads.js gagal dimuat, halaman tetap berjalan dan data tetap disimpan untuk dikirim nanti.
+if(!window.MI) window.MI = {
+  send(ep, data){
+    data.id = data.id || Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+    try{ const q = JSON.parse(localStorage.getItem("mi_queue") || "[]"); q.push(data); localStorage.setItem("mi_queue", JSON.stringify(q)); }catch(e){}
+    return fetch(ep, { method:"POST", mode:"no-cors", headers:{ "Content-Type":"text/plain;charset=utf-8" }, body: JSON.stringify(data) }).catch(() => {});
+  },
+  flush(){}
+};
 MI.endpoint = CONFIG.sheetEndpoint;
 MI.flush(CONFIG.sheetEndpoint);
 
@@ -625,7 +635,9 @@ const VDAY_LABEL = { 1:"Hari 1 · 8 Okt", 2:"Hari 2 · 9 Okt", 3:"Hari 3 · 10 O
 let voucherDay = 1;
 function renderVoucher(){
   const url = CONFIG.voucherUrl + "&day=" + voucherDay;
-  $("#voucherQr").src = "https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=" + encodeURIComponent(url);
+  // QR dibuat langsung di HP (vendor/qrcode.js), tanpa layanan luar, tetap jalan saat sinyal booth lemah
+  try{ const q = qrcode(0, "M"); q.addData(url); q.make(); $("#voucherQr").src = q.createDataURL(8, 4); }
+  catch(e){ $("#voucherQr").alt = "QR tidak bisa dimuat. Ketuk tombol di bawah untuk membuka voucher."; }
   $("#voucherLink").href = url;
   $("#voucherDayLabel").textContent = "Berlaku untuk " + VDAY_LABEL[voucherDay] + ".";
   const key = "mi_voucher_claimed_day_" + voucherDay;

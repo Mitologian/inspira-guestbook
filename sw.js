@@ -1,6 +1,6 @@
 // Naikkan versi ini setiap kali mengubah isi halaman, supaya HP pengunjung mengambil versi baru.
-const VERSION = "mi-link-v38";
-const SHELL = ["./", "index.html", "tipe.html", "ioite.html", "booth.html", "leads.js", "manifest.webmanifest", "mitologi-inspira.vcf",
+const VERSION = "mi-link-v39";
+const SHELL = ["./", "index.html", "tipe.html", "ioite.html", "booth.html", "leads.js", "vendor/qrcode.js", "manifest.webmanifest", "mitologi-inspira.vcf",
   "images/logo.png", "images/hero.jpg", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];
 
 self.addEventListener("install", e => {
