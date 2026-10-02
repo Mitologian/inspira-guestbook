@@ -1,6 +1,6 @@
 // Naikkan versi ini setiap kali mengubah isi halaman, supaya HP pengunjung mengambil versi baru.
-const VERSION = 'mi-link-v37';
-const SHELL = ["./", "index.html", "tipe.html", "ioite.html", "manifest.webmanifest", "mitologi-inspira.vcf",
+const VERSION = "mi-link-v38";
+const SHELL = ["./", "index.html", "tipe.html", "ioite.html", "booth.html", "leads.js", "manifest.webmanifest", "mitologi-inspira.vcf",
   "images/logo.png", "images/hero.jpg", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];
 
 self.addEventListener("install", e => {
@@ -19,7 +19,7 @@ self.addEventListener("fetch", e => {
   if (!sameOrigin && !isFont) return;
   // Halaman: coba jaringan dulu (isi selalu terbaru), jatuh ke cache saat offline.
   if (req.mode === "navigate") {
-    e.respondWith(fetch(req).then(r => { caches.open(VERSION).then(c => c.put(req, r.clone())); return r; })
+    e.respondWith(fetch(req).then(r => { if (r.ok) { const copy = r.clone(); caches.open(VERSION).then(c => c.put(req, copy)); } return r; })
       .catch(() => caches.match(req).then(h => h || caches.match("index.html"))));
     return;
   }

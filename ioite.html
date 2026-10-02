@@ -425,6 +425,7 @@ footer.wrap{padding:20px 22px calc(40px + env(safe-area-inset-bottom));text-alig
 
 <div class="toast" id="toast"></div>
 
+<script src="leads.js"></script>
 <script>
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
@@ -442,6 +443,9 @@ const CONFIG = {
   }
 };
 /* ======================================= */
+
+MI.endpoint = CONFIG.sheetEndpoint;
+MI.flush(CONFIG.sheetEndpoint);
 
 function toast(t){ const el = $("#toast"); el.textContent = t; el.classList.add("show"); setTimeout(()=>el.classList.remove("show"), 3200); }
 
@@ -564,10 +568,7 @@ $("#regForm").addEventListener("submit", e => {
   const list = proof.value; // "utama" | "cadangan"
   const data = { type:"ioite", list, item:currentReg.item, itemName:currentReg.name, day:currentReg.day,
     name, phone:"62"+phone, page:location.href, ts:new Date().toISOString() };
-  if(CONFIG.sheetEndpoint){
-    fetch(CONFIG.sheetEndpoint, { method:"POST", mode:"no-cors", headers:{ "Content-Type":"text/plain;charset=utf-8" }, body: JSON.stringify(data) })
-      .catch(() => store.set("mi_ioite_pending_"+Date.now(), JSON.stringify(data)));
-  }
+  if(CONFIG.sheetEndpoint) MI.send(CONFIG.sheetEndpoint, data); // masuk antrean HP dulu, dikirim ulang otomatis jika gagal
   closeSheet();
   toast(list === "utama" ? "Terdaftar! Anda masuk waiting list utama." : "Terdaftar! Anda masuk waiting list cadangan.");
 });

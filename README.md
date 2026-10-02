@@ -10,7 +10,9 @@ Pengganti Linktree dan flyer cetak. Pengunjung scan QR, mengisi nama dan nomor W
 | `manifest.webmanifest`, `sw.js` | Membuat halaman bisa dipasang sebagai app dan tetap terbuka saat offline |
 | `icons/` | Ikon app (sementara). Ganti dengan logo resmi, ukuran dan nama file sama |
 | `mitologi-inspira.vcf` | Kartu kontak untuk tombol "Simpan Kontak" |
-| `apps-script.gs` | Penerima lead ke Google Sheet |
+| `apps-script.gs` | Penerima lead dan pendaftaran IOITE ke Google Sheet |
+| `leads.js` | Pengirim data dengan antrean di HP: kalau sinyal putus, dikirim ulang otomatis |
+| `booth.html` | Halaman QR booth IOITE, memilih kode voucher sesuai tanggal |
 | `CNAME`, `.nojekyll` | Untuk GitHub Pages dengan subdomain |
 
 ## 1. Upload ke GitHub Pages
@@ -37,7 +39,17 @@ HTTPS wajib. Tanpa HTTPS, fitur pasang app tidak jalan.
    - Who has access: **Anyone**
 4. Salin URL Web App (berakhiran `/exec`), tempel ke `CONFIG.sheetEndpoint` di `index.html`, commit.
 
+Setelah mengganti `apps-script.gs`, buka Deploy → Manage deployments → Edit → Version: New version → Deploy. URL `/exec` tetap sama.
+
 Lead masuk ke tab `Leads QR` berisi waktu, nama, WhatsApp, jabatan, perusahaan, email, sumber QR, link WA siap klik, dan status.
+
+Pendaftaran kelas, quest, dan coaching di halaman IOITE masuk ke tab:
+
+- `Waiting List Utama IOITE`: yang sudah punya laporan Lakon.
+- `Waiting List Cadangan IOITE`: yang belum.
+- `Semua Pendaftaran IOITE`: gabungan keduanya. Filter kolom `Kegiatan` dan `Hari` untuk melihat satu kelas.
+
+Kolom `Antrian` adalah urutan daftar di kegiatan dan hari yang sama, per tab. `Punya Lakon` berdasarkan pilihan pendaftar di form, belum diverifikasi ke sistem Lakon. Pendaftar yang sama untuk kegiatan yang sama tidak dicatat dua kali. Kalau pendaftar cadangan lalu mendaftar lagi sebagai utama, baris lamanya ditandai `Pindah ke Utama`.
 
 Jika Anda sudah pernah membuat tab `Leads QR` dari versi lama, hapus tab itu sebelum mengetes lagi, supaya kolom barunya dibuat ulang.
 
@@ -68,4 +80,4 @@ Parameter `?src=` tercatat di kolom "Sumber QR". Buat QR berbeda per flyer atau 
 - **Android (Chrome, Samsung Internet):** tombol "Pasang di layar utama" memunculkan dialog instal asli.
 - **iPhone:** Apple tidak mengizinkan dialog instal otomatis. Halaman menampilkan panduan 3 langkah (Share → Add to Home Screen) dan harus dibuka di Safari.
 - **Browser dalam aplikasi** (Instagram, TikTok, Facebook) tidak bisa memasang app. Pengunjung diminta membuka di Chrome atau Safari. Scan dari kamera HP langsung membuka browser biasa, jadi aman.
-- Dengan `popupAktif: false`, form hanya muncul lewat tombol "Simpan di HP" dan bisa ditutup tanpa diisi.
+- Dengan `popupAktif: true` (saat ini), form muncul otomatis dan wajib diisi. Dengan `false`, form hanya muncul lewat tombol "Simpan di HP" dan bisa ditutup tanpa diisi.
