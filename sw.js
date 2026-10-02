@@ -1,5 +1,5 @@
 // Naikkan versi ini setiap kali mengubah isi halaman, supaya HP pengunjung mengambil versi baru.
-const VERSION = "mi-link-v34";
+const VERSION = 'mi-link-v35';
 const SHELL = ["./", "index.html", "tipe.html", "ioite.html", "manifest.webmanifest", "mitologi-inspira.vcf",
   "images/logo.png", "images/hero.jpg", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];
 
