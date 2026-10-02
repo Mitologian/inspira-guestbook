@@ -101,11 +101,11 @@ h2{font-size:22px;margin-bottom:8px}
   border-top:1px solid var(--line);display:flex;justify-content:space-between;padding:7px 4px calc(7px + env(safe-area-inset-bottom));box-shadow:0 -2px 14px rgba(0,0,0,.06)}
 .bottomnav a{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;text-decoration:none;color:var(--muted);font-size:10.5px;font-weight:600;border-radius:12px;min-width:0}
 .bottomnav a svg{width:22px;height:22px}
-.bottomnav a.active{color:var(--red-text);background:rgba(232,67,26,.10)}
-  .bottomnav a.active svg{stroke-width:2.4}
+.bottomnav a.active{color:#fff;background:var(--red);box-shadow:0 2px 8px rgba(232,67,26,.35)}
+  .bottomnav a.active svg{stroke-width:2.6}
 .bottomnav a.ioite{color:#B4740A}
 .bottomnav a.ioite svg{color:var(--orange)}
-.bottomnav a.ioite.active{color:#8A5200;background:rgba(247,148,29,.18)}
+.bottomnav a.ioite.active{color:#1A1A1A;background:var(--orange);box-shadow:0 2px 8px rgba(247,148,29,.4)}
 .overlay.lb{align-items:center;padding:16px}
 .overlay.lb img{max-width:100%;max-height:85vh;border-radius:14px}
 
@@ -561,6 +561,17 @@ $("#lb").addEventListener("click", () => { $("#lb").classList.remove("show"); do
 if("serviceWorker" in navigator && location.protocol === "https:"){
   navigator.serviceWorker.register("sw.js");
 }
+</script>
+<script>
+/* Tandai halaman yang sedang dibuka pada menu bawah, dihitung dari alamat halaman. */
+(function(){
+  var p = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+  if (!p || p === "") p = "index.html";
+  document.querySelectorAll(".bottomnav a").forEach(function(a){
+    var h = (a.getAttribute("href") || "").toLowerCase();
+    a.classList.toggle("active", h === p);
+  });
+})();
 </script>
 </body>
 </html>
