@@ -56,7 +56,7 @@ Jika Anda sudah pernah membuat tab `Leads QR` dari versi lama, hapus tab itu seb
 ## 4. Pengaturan cepat (`CONFIG` di `index.html`)
 
 - `waNumber`: nomor tujuan WhatsApp, format `62...`
-- `links`: URL website, Ansaka, Lakon, Instagram
+- `links`: URL website, Ansaka, Lakon, YouTube
 - `promptDelayMs`: jeda sebelum form muncul. Form muncul di setiap kunjungan sampai pengunjung mengisinya
 - `videoId`: ID video YouTube untuk bagian video
 
