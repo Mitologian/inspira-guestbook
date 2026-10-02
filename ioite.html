@@ -237,7 +237,7 @@ footer.wrap{padding:20px 22px calc(40px + env(safe-area-inset-bottom));text-alig
     </div>
     <div class="card rundown">
       <div class="dayview active" id="day-1">
-        <span class="pill">Expo Quest: Radar &amp; Sonar (E vs I)</span>
+        <span class="pill">Expo Quest: Stranger Greeter (E vs I)</span>
         <div class="row"><div class="t">09.00–11.00</div><div>Booth buka, main bebas: Type Wall, Team Type Challenge, Kartu Mitos &amp; Wheel</div></div>
         <div class="row"><div class="t">11.00–12.00</div><div>Expo Quest hari ini + debrief</div></div>
         <div class="row"><div class="t">12.00–14.00</div><div>Istirahat bergantian, slot Coaching with Coach Dedy</div></div>
@@ -245,7 +245,7 @@ footer.wrap{padding:20px 22px calc(40px + env(safe-area-inset-bottom));text-alig
         <div class="row"><div class="t">17.00–19.00</div><div>Kelas Lakon sesi 2 + live reading</div></div>
       </div>
       <div class="dayview" id="day-2">
-        <span class="pill">Expo Quest: Cetak Biru vs Peta Buta (S vs N)</span>
+        <span class="pill">Expo Quest: Pop-Up Guide (S vs N)</span>
         <div class="row"><div class="t">09.00–11.00</div><div>Booth buka, main bebas: Type Wall, Team Type Challenge, Kartu Mitos &amp; Wheel</div></div>
         <div class="row"><div class="t">11.00–12.00</div><div>Expo Quest hari ini + debrief</div></div>
         <div class="row"><div class="t">12.00–14.00</div><div>Istirahat bergantian, slot Coaching with Coach Dedy</div></div>
@@ -253,7 +253,7 @@ footer.wrap{padding:20px 22px calc(40px + env(safe-area-inset-bottom));text-alig
         <div class="row"><div class="t">17.00–19.00</div><div>Kelas Lakon sesi 2 + live reading</div></div>
       </div>
       <div class="dayview" id="day-3">
-        <span class="pill">Expo Quest: Sidang Kilat (T vs F)</span>
+        <span class="pill">Expo Quest: The Last Seat (T vs F)</span>
         <div class="row"><div class="t">09.00–11.00</div><div>Booth buka, main bebas: Type Wall, Team Type Challenge, Kartu Mitos &amp; Wheel</div></div>
         <div class="row"><div class="t">11.00–12.00</div><div>Expo Quest hari ini + debrief</div></div>
         <div class="row"><div class="t">12.00–14.00</div><div>Istirahat bergantian, slot Coaching with Coach Dedy</div></div>
@@ -261,7 +261,7 @@ footer.wrap{padding:20px 22px calc(40px + env(safe-area-inset-bottom));text-alig
         <div class="row"><div class="t">17.00–19.00</div><div>Kelas Lakon sesi 2 + live reading</div></div>
       </div>
       <div class="dayview" id="day-4">
-        <span class="pill">Expo Quest: Rencana vs Reaksi (J vs P)</span>
+        <span class="pill">Expo Quest: Dynamic Plans (J vs P)</span>
         <div class="row"><div class="t">09.00–11.00</div><div>Booth buka, main bebas: Type Wall, Team Type Challenge, Kartu Mitos &amp; Wheel</div></div>
         <div class="row"><div class="t">11.00–12.00</div><div>Expo Quest hari ini + debrief</div></div>
         <div class="row"><div class="t">12.00–14.00</div><div>Istirahat bergantian, slot Coaching with Coach Dedy</div></div>
@@ -508,25 +508,25 @@ const savedLeadWa = JSON.parse(store.get("mi_lead") || "null");
 /* ---- day tabs (rundown + reglist saling terhubung) ---- */
 const DAYS = [
   { day:1, label:"Hari 1 · 8 Okt", items:[
-    { id:"quest-1", name:"Expo Quest: Radar & Sonar", time:"11.00–12.00" },
+    { id:"quest-1", name:"Expo Quest: Stranger Greeter", time:"11.00–12.00" },
     { id:"lakon1-1", name:"Kelas Lakon Sesi 1", time:"14.00–16.00" },
     { id:"lakon2-1", name:"Kelas Lakon Sesi 2", time:"17.00–19.00" },
     { id:"coach-1", name:"Coaching with Coach Dedy", time:"12.00–14.00 · slot terbatas" }
   ]},
   { day:2, label:"Hari 2 · 9 Okt", items:[
-    { id:"quest-2", name:"Expo Quest: Cetak Biru vs Peta Buta", time:"11.00–12.00" },
+    { id:"quest-2", name:"Expo Quest: Pop-Up Guide", time:"11.00–12.00" },
     { id:"lakon1-2", name:"Kelas Lakon Sesi 1", time:"14.00–16.00" },
     { id:"lakon2-2", name:"Kelas Lakon Sesi 2", time:"17.00–19.00" },
     { id:"coach-2", name:"Coaching with Coach Dedy", time:"12.00–14.00 · slot terbatas" }
   ]},
   { day:3, label:"Hari 3 · 10 Okt", items:[
-    { id:"quest-3", name:"Expo Quest: Sidang Kilat", time:"11.00–12.00" },
+    { id:"quest-3", name:"Expo Quest: The Last Seat", time:"11.00–12.00" },
     { id:"lakon1-3", name:"Kelas Lakon Sesi 1", time:"14.00–16.00" },
     { id:"lakon2-3", name:"Kelas Lakon Sesi 2", time:"17.00–19.00" },
     { id:"coach-3", name:"Coaching with Coach Dedy", time:"12.00–14.00 · slot terbatas" }
   ]},
   { day:4, label:"Hari 4 · 11 Okt", items:[
-    { id:"quest-4", name:"Expo Quest: Rencana vs Reaksi", time:"11.00–12.00" },
+    { id:"quest-4", name:"Expo Quest: Dynamic Plans", time:"11.00–12.00" },
     { id:"lakon1-4", name:"Kelas Lakon Sesi 1", time:"14.00–16.00" },
     { id:"lakon2-4", name:"Kelas Lakon Sesi 2", time:"17.00–19.00" },
     { id:"coach-4", name:"Coaching with Coach Dedy", time:"12.00–14.00 · slot terbatas" }
