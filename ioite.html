@@ -47,6 +47,7 @@ button{font:inherit;cursor:pointer}
 .bottomnav a.ioite{color:#B4740A}
 .bottomnav a.ioite svg{color:var(--orange)}
 .bottomnav a.ioite.active{color:#1A1A1A;background:#F7941D;box-shadow:0 2px 8px rgba(247,148,29,.4)}
+.bottomnav a.ioite.active svg{color:#fff}
 
 /* mini hero */
 .hero{background:linear-gradient(180deg,rgba(20,14,8,.35) 0%,rgba(20,14,8,.65) 50%,rgba(20,14,8,.95) 100%),url("images/ioite-hero.jpg") center/cover no-repeat,#1A1A1A;color:#fff;padding:26px 0 22px;position:relative;overflow:hidden}
@@ -59,6 +60,8 @@ button{font:inherit;cursor:pointer}
 .countdown div{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:10px 4px;text-align:center}
 .countdown b{display:block;font-family:Montserrat,sans-serif;font-size:20px}
 .countdown span{font-size:10px;color:#C9CED4;text-transform:uppercase;letter-spacing:.6px}
+.livestatus{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:13px;font-weight:600;color:#FFC877}
+.livestatus i{width:8px;height:8px;border-radius:50%;background:#56A038;box-shadow:0 0 0 3px rgba(86,160,56,.3)}
 
 /* sections */
 section{padding:26px 0 4px}
@@ -206,6 +209,7 @@ footer.wrap{padding:20px 22px calc(40px + env(safe-area-inset-bottom));text-alig
       <div><b id="cdM">–</b><span>Menit</span></div>
       <div><b id="cdS">–</b><span>Detik</span></div>
     </div>
+    <div class="livestatus" id="liveStatus" hidden></div>
   </div>
 </header>
 
@@ -477,17 +481,28 @@ const savedLeadWa = JSON.parse(store.get("mi_lead") || "null");
   $("#waBtm").href = `https://wa.me/${CONFIG.waNumber}?text=${encodeURIComponent(msg)}`;
 }
 
-/* ---- countdown ke hari pertama ---- */
+/* ---- countdown ke hari pertama; setelah mulai diganti teks kecil "Sedang berlangsung · Hari N" ---- */
 (function(){
   const target = new Date("2026-10-08T09:00:00+07:00").getTime();
+  const endAt = new Date("2026-10-11T21:00:00+07:00").getTime(); // perkiraan selesai hari terakhir
+  let timer;
+  function showStatus(){
+    const now = Date.now();
+    const el = $("#liveStatus");
+    $("#countdown").hidden = true; $("#countdown").style.display = "none";
+    el.hidden = false;
+    if(now >= endAt){ el.textContent = "IOITE 2026 sudah selesai. Terima kasih sudah mampir!"; clearInterval(timer); return; }
+    const day = Math.min(4, Math.floor((now - new Date("2026-10-08T00:00:00+07:00").getTime()) / 86400000) + 1);
+    el.innerHTML = "<i></i>Sedang berlangsung · Hari " + day;
+  }
   function tick(){
     const diff = target - Date.now();
-    if(diff <= 0){ $("#countdown").innerHTML = "<div style='flex:1;text-align:center'><b>Sedang berlangsung!</b></div>"; return; }
+    if(diff <= 0){ showStatus(); return; }
     const d = Math.floor(diff/86400000), h = Math.floor(diff%86400000/3600000), m = Math.floor(diff%3600000/60000), s = Math.floor(diff%60000/1000);
     $("#cdD").textContent = d; $("#cdH").textContent = String(h).padStart(2,"0");
     $("#cdM").textContent = String(m).padStart(2,"0"); $("#cdS").textContent = String(s).padStart(2,"0");
   }
-  tick(); setInterval(tick, 1000);
+  timer = setInterval(tick, 1000); tick();
 })();
 
 /* ---- day tabs (rundown + reglist saling terhubung) ---- */
