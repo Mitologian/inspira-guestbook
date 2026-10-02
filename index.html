@@ -156,12 +156,13 @@ footer b{color:var(--ink)}
 .phone span{padding:0 4px 0 14px;font-weight:600;color:var(--muted)}
 .phone input{border:0;background:transparent;padding-left:4px}
 .err{color:var(--red);font-size:13px;margin-top:4px;display:none}
-.cta{width:100%;height:52px;border:0;border-radius:14px;background:var(--orange);color:var(--ink);font-weight:700;font-size:16px;margin-top:6px}
+.cta{width:100%;height:52px;border:0;border-radius:14px;background:var(--orange);color:var(--ink);font-weight:700;font-size:16px;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:8px}
+.cta svg{width:20px;height:20px}
 .cta:disabled{opacity:.6}
 .skip{display:block;width:100%;background:none;border:0;color:var(--muted);font-size:14px;padding:12px;margin-top:4px}
 .row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:end}
 .opt{font-weight:400;color:var(--muted)}
-.privacy{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+.privacy{font-size:12px;color:var(--muted);text-align:center;margin-top:14px}
 .steps{display:grid;gap:10px;margin-top:6px}
 .step{display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;border:1.5px solid var(--line);background:#fff;text-align:left;
   width:100%;text-decoration:none;color:var(--ink)}
@@ -334,22 +335,22 @@ footer b{color:var(--ink)}
   <div class="sheet">
 
     <div id="stepForm">
-      <h3 id="sheetTitle">Kenalan dulu, yuk</h3>
-      <p class="sub">Isi data singkat untuk mulai jelajahi, dari cerita program sampai tipe kepribadianmu.</p>
+      <h3 id="sheetTitle">Silahkan Isi Buku Tamu</h3>
+      <p class="sub">Isi data singkat untuk mulai jelajahi informasi kami, cerita tipe kepribadianmu, dan panduan aktivitas di IOITE Expo.</p>
       <form id="leadForm" novalidate>
         <div class="field"><label for="fName">Nama</label><input id="fName" autocomplete="name" required></div>
         <div class="field"><label for="fPhone">Nomor WhatsApp</label>
           <div class="phone"><span>+62</span><input id="fPhone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="812 3456 7890" required></div>
           <div class="err" id="phoneErr">Masukkan nomor WhatsApp yang valid.</div></div>
         <div class="row2">
-          <div class="field"><label for="fCo">Perusahaan <span class="opt">(opsional)</span></label><input id="fCo" autocomplete="organization"></div>
-          <div class="field"><label for="fJob">Jabatan <span class="opt">(opsional)</span></label><input id="fJob" autocomplete="organization-title"></div>
+          <div class="field"><label for="fCo">Perusahaan</label><input id="fCo" autocomplete="organization"></div>
+          <div class="field"><label for="fJob">Jabatan</label><input id="fJob" autocomplete="organization-title"></div>
         </div>
-        <div class="field"><label for="fMail">Email <span class="opt">(opsional)</span></label><input id="fMail" type="email" inputmode="email" autocomplete="email" placeholder="nama@perusahaan.com">
-          <div class="err" id="mailErr">Format email belum benar.</div></div>
-        <button class="cta" id="submitBtn" type="submit">Lanjut</button>
+        <div class="field"><label for="fMail">Email</label><input id="fMail" type="email" required inputmode="email" autocomplete="email" placeholder="nama@perusahaan.com">
+          <div class="err" id="mailErr">Masukkan email yang valid.</div></div>
+        <button class="cta" id="submitBtn" type="submit">Lanjut<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </form>
-      <p class="privacy">Dengan melanjutkan, Anda setuju data ini diproses Mitologi Inspira untuk menghubungi Anda dan tidak dibagikan ke pihak lain. Hubungi sales@mitologiinspira.com untuk meminta penghapusan data.</p>
+      <p class="privacy">Informasi hanya untuk kepentingan internal, tidak akan dibagikan ke pihak lain.</p>
     </div>
 
     <div id="stepSave" hidden>
@@ -493,7 +494,7 @@ $("#leadForm").addEventListener("submit", e => {
   const jabatan = $("#fJob").value.trim();
   const email = $("#fMail").value.trim();
   const okPhone = /^8\d{7,11}$/.test(phone);
-  const okMail = !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const okMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   $("#phoneErr").style.display = okPhone ? "none" : "block";
   $("#mailErr").style.display = okMail ? "none" : "block";
   if(!name){ $("#fName").focus(); return; }
