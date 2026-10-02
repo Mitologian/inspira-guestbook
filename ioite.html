@@ -88,8 +88,10 @@ h2{font-size:21px;margin-bottom:8px}
 .regitem .t{flex:1;min-width:0}
 .regitem .t b{display:block;font-size:14.5px}
 .regitem .t small{color:var(--muted);font-size:12.5px}
-.coach-link{margin-top:14px;text-decoration:none;color:var(--ink)}
-.coach-link .go{flex:none;color:var(--muted);font-size:20px;font-weight:600}
+.coach-link{margin-top:14px;text-decoration:none;color:var(--ink);background:var(--orange);border-color:var(--orange)}
+.coach-link .photo{flex:none;width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #fff;background:#fff}
+.coach-link .t small{color:#4A3210}
+.coach-link .go{flex:none;color:var(--ink);font-size:22px;font-weight:700}
 .regbtn{flex:none;border:0;background:var(--orange);color:var(--ink);font-weight:700;font-size:12.5px;padding:9px 14px;border-radius:10px}
 
 /* stage banner */
@@ -270,8 +272,8 @@ footer.wrap{padding:20px 22px calc(40px + env(safe-area-inset-bottom));text-alig
     <h2>Daftar Aktivitas Hari Ini</h2>
     <p class="lead">Sudah punya laporan lengkap Lakon Profile Report? Anda masuk waiting list utama. Belum punya, tetap bisa daftar dan masuk waiting list cadangan.</p>
     <div class="reglist" id="reglist"><!-- diisi lewat JS berdasarkan hari yang dipilih --></div>
-    <a class="card regitem coach-link" href="https://dedydahlan.com" target="_blank" rel="noopener" style="--c:var(--ink)">
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+    <a class="card regitem coach-link" href="https://dedydahlan.com" target="_blank" rel="noopener">
+      <img class="photo" src="images/coach-dedy.jpg" alt="Coach Dedy Dahlan" width="48" height="48" loading="lazy">
       <span class="t"><b>Kenali Coach Dedy Dahlan</b><small>Profil, tulisan, dan karya di dedydahlan.com</small></span>
       <span class="go">›</span>
     </a>
