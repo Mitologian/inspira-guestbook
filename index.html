@@ -61,6 +61,9 @@ h2{font-size:22px;margin-bottom:8px}
 .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line)}
 .about{padding:18px}
 .about p{font-size:15px}
+.about-link{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
+  text-decoration:none;font-weight:600;font-size:14px;color:var(--red-text)}
+.about-link span{font-weight:700}
 .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .badges span{font-size:12px;font-weight:600;padding:6px 10px;border-radius:999px;background:var(--tint);color:var(--ink)}
 .quote{margin-top:14px;padding:12px 14px;border-left:4px solid var(--orange);background:#FFF7EC;border-radius:0 12px 12px 0;
@@ -209,6 +212,7 @@ footer b{color:var(--ink)}
     <div class="card about">
       <p>Mitologi Inspira adalah konsultan team development dan learning experience di Jakarta. Selama lebih dari 15 tahun kami membantu perusahaan membangun tim yang selaras dan bersinergi, melalui program lima fase dari diagnostik organisasi hingga kemitraan pembelajaran berkelanjutan. Kami vendor resmi berlisensi MBTI untuk Indonesia. Sinergi tim tidak dibentuk dari satu sesi.</p>
       <div class="badges"><span>15+ tahun</span><span>Vendor resmi MBTI</span><span>Expert praktisi</span><span>Experiential &amp; gamified</span></div>
+      <a class="about-link" data-link="website" href="#" target="_blank" rel="noopener">Kunjungi website Mitologi Inspira <span>›</span></a>
     </div>
   </section>
 
@@ -380,6 +384,21 @@ footer b{color:var(--ink)}
   </div>
 </div>
 
+<div class="overlay" id="iosSheet" role="dialog" aria-modal="true" aria-labelledby="iosTitle">
+  <div class="sheet">
+    <h3 id="iosTitle">Pasang di iPhone</h3>
+    <p class="sub">Apple tidak mengizinkan pemasangan otomatis. Ikuti 3 langkah ini di Safari:</p>
+    <div class="ios" style="display:block;margin-top:0">
+      <ol>
+        <li>Ketuk tombol <b>Share</b> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M8 7l4-4 4 4M5 12v8h14v-8"/></svg> di bawah layar Safari</li>
+        <li>Pilih <b>Add to Home Screen</b></li>
+        <li>Ketuk <b>Add</b></li>
+      </ol>
+    </div>
+    <button class="skip" data-close-ios>Mengerti</button>
+  </div>
+</div>
+
 <div class="overlay lb" id="lb"><img id="lbImg" alt=""></div>
 
 <div class="toast" id="toast"></div>
@@ -464,17 +483,22 @@ async function doInstall(){
     if(r.outcome === "accepted") $("#installStep").classList.add("done");
     deferredPrompt = null;
   } else if(isIOS){
-    $("#iosHelp").style.display = "block";
-    $("#iosHelp").scrollIntoView({behavior:"smooth", block:"nearest"});
+    if(sheet.classList.contains("show")){
+      $("#iosHelp").style.display = "block";
+      $("#iosHelp").scrollIntoView({behavior:"smooth", block:"nearest"});
+    } else {
+      $("#iosSheet").classList.add("show"); document.body.style.overflow = "hidden";
+    }
   } else if(inAppBrowser){
     toast("Buka halaman ini di Chrome atau Safari untuk memasang app.");
   } else {
     toast("Buka menu browser (⋮), lalu pilih \"Tambahkan ke layar utama\".");
   }
 }
+$("#iosSheet").addEventListener("click", e => { if(e.target === $("#iosSheet") || e.target.hasAttribute("data-close-ios")){ $("#iosSheet").classList.remove("show"); document.body.style.overflow = ""; } });
 $("#installStep").addEventListener("click", doInstall);
 $("#installBtm").addEventListener("click", doInstall);
-$("#saveTop").addEventListener("click", () => openSheet(store.get("mi_lead") ? "save" : "form"));
+$("#saveTop").addEventListener("click", doInstall);
 $("#contactStep").addEventListener("click", () => $("#contactStep").classList.add("done"));
 $("#waStep").addEventListener("click", () => $("#waStep").classList.add("done"));
 if(isIOS){ $("#installHint").textContent = "Lewat Share, lalu Add to Home Screen"; }
