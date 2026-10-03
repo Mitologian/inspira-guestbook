@@ -284,9 +284,27 @@ footer.wrap{padding:20px 22px calc(40px + env(safe-area-inset-bottom));text-alig
   </section>
 
   <section>
-    <div class="eyebrow">Panggung Utama</div>
+    <div class="eyebrow">Main Stage</div>
     <h2>Bareng Coach Dedy Dahlan</h2>
     <p class="lead">Baca deskripsi, cek waktunya, lalu pasang pengingat atau tambahkan ke kalender.</p>
+
+    <div class="card stage">
+      <img class="cover" src="images/ioite-stage-talkshow.jpg" alt="Foto talkshow Business Success Formula di Main Stage" loading="lazy">
+      <div class="body">
+        <span class="badge fix">Sudah fix</span>
+        <h3>Talkshow: Business Success Formula</h3>
+        <div class="who">People, Process, Profit · Moderator: Dedy Dahlan</div>
+        <p class="desc">Talkshow di Main Stage tentang tiga fondasi bisnis yang berkelanjutan: People, Process, dan Profit. Coach Dedy Dahlan hadir sebagai moderator.</p>
+        <div class="when" data-stage="talkshow">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <span>Jumat, 9 Oktober 2026 · 12.30–13.30 WIB · Main Stage</span>
+        </div>
+        <div class="actions">
+          <button class="primary" data-remind="talkshow">🔔 Set Reminder</button>
+          <button data-cal="talkshow">📅 Kalender</button>
+        </div>
+      </div>
+    </div>
 
     <div class="card stage">
       <img class="cover" src="images/ioite-stage-synergy.jpg" alt="Foto sesi Team Synergy and Personality" loading="lazy">
@@ -294,33 +312,14 @@ footer.wrap{padding:20px 22px calc(40px + env(safe-area-inset-bottom));text-alig
         <span class="badge fix">Sudah fix</span>
         <h3>Team Synergy and Personality</h3>
         <div class="who">Seminar bersama Coach Dedy Dahlan</div>
-        <p class="desc">Bagaimana kepribadian tim membentuk cara kerja, komunikasi, dan sinergi sehari-hari — dibawakan langsung oleh Coach Dedy Dahlan, founder Mitologi Inspira.</p>
+        <p class="desc">Bagaimana kepribadian tim membentuk cara kerja, komunikasi, dan sinergi sehari-hari. Dibawakan langsung oleh Coach Dedy Dahlan, founder Mitologi Inspira.</p>
         <div class="when" data-stage="synergy">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-          <span>Jadwal menyusul — perkiraan Hari 2, 9 Okt</span>
+          <span>Sabtu, 10 Oktober 2026 · 16.30–17.15 WIB · Main Stage</span>
         </div>
-        <p class="fineprint" style="text-align:left;margin:-6px 0 10px">Jam pasti masih menunggu konfirmasi panitia, halaman ini diperbarui begitu jadwal final keluar.</p>
         <div class="actions">
           <button class="primary" data-remind="synergy">🔔 Set Reminder</button>
           <button data-cal="synergy">📅 Kalender</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card stage">
-      <img class="cover" src="images/ioite-stage-talkshow.jpg" alt="Foto talkshow panggung utama" loading="lazy">
-      <div class="body">
-        <span class="badge tbd">Belum fix</span>
-        <h3>Talkshow Panggung Utama</h3>
-        <div class="who">Bareng Coach Dedy Dahlan · topik &amp; tamu menyusul</div>
-        <p class="desc">Sesi kedua Coach Dedy Dahlan di panggung utama, format talkshow. Topik dan tamu pendamping masih dalam konfirmasi panitia.</p>
-        <div class="when" data-stage="talkshow">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-          <span>Jadwal &amp; topik belum diumumkan</span>
-        </div>
-        <div class="actions">
-          <button class="primary" data-remind="talkshow">🔔 Ingatkan saat fix</button>
-          <button data-cal="talkshow" disabled style="opacity:.5">📅 Kalender</button>
         </div>
       </div>
     </div>
@@ -451,10 +450,10 @@ const CONFIG = {
   sheetEndpoint: "https://script.google.com/macros/s/AKfycbxEXzn42eDTramxXt9sgWNtynJ6jaZiSbDhK_kEfBIHdTCV2zizBs-HtmRA1VoYRl943A/exec",// pakai URL Apps Script yang sama dengan index.htmlTautan Web App Apps Script penerima guestbook
   // QR, tombol, dan kode voucher mengikuti booth.html?hari=N (kode IOITE-D1 sampai IOITE-D4 diatur di booth.html)
   voucherPage: "booth.html",
-  // Ganti tanggal/jam di sini begitu jadwal panggung sudah fix dari panitia.
+  // Jadwal Main Stage. Jika berubah, ganti when/end di sini dan teks jam pada kartu di bagian Main Stage.
   stage: {
-    synergy:  { title:"Team Synergy and Personality", when:"2026-10-09T13:00:00+07:00", fixed:true,  label:"Hari 2, 9 Okt · 13.00 WIB (perkiraan)" },
-    talkshow: { title:"Talkshow Panggung Utama",       when:"2026-10-10T15:00:00+07:00", fixed:false, label:"Belum diumumkan" }
+    synergy:  { title:"Team Synergy and Personality",                 when:"2026-10-10T16:30:00+07:00", end:"2026-10-10T17:15:00+07:00", note:"Seminar bersama Coach Dedy Dahlan" },
+    talkshow: { title:"Talkshow Business Success Formula: People, Process, Profit", when:"2026-10-09T12:30:00+07:00", end:"2026-10-09T13:30:00+07:00", note:"Moderator: Dedy Dahlan" }
   }
 };
 /* ======================================= */
@@ -611,7 +610,7 @@ $("#regForm").addEventListener("submit", e => {
 /* ---- reminder (Notification API, aktif selagi tab/app terbuka) ---- */
 function loadReminders(){ try{ return JSON.parse(store.get("mi_reminders") || "[]") }catch(e){ return [] } }
 function saveReminders(list){ store.set("mi_reminders", JSON.stringify(list)); }
-function reminderLabel(key){ return key === "synergy" ? "Seminar Team Synergy and Personality" : "Talkshow Panggung Utama"; }
+function reminderLabel(key){ return key === "synergy" ? "Seminar Team Synergy and Personality" : "Talkshow Business Success Formula"; }
 
 async function setReminder(key){
   if(!("Notification" in window)){ toast("Browser ini tidak mendukung notifikasi. Coba buka lewat Chrome/Safari."); return; }
@@ -633,7 +632,7 @@ function checkReminders(){
     const t = new Date(r.when).getTime();
     if(now >= t - 15*60000 && now < t + 5*60000){
       changed = true; r.fired = true;
-      try{ new Notification("Mitologi Inspira · IOITE", { body: reminderLabel(r.key) + " segera dimulai di panggung utama.", icon:"icons/icon-192.png" }); }catch(e){}
+      try{ new Notification("Mitologi Inspira · IOITE", { body: reminderLabel(r.key) + " segera dimulai di Main Stage.", icon:"icons/icon-192.png" }); }catch(e){}
       toast(reminderLabel(r.key) + " segera dimulai!");
     }
   });
@@ -647,8 +646,8 @@ function toIcsDate(iso){ return new Date(iso).toISOString().replace(/[-:]/g,"").
 function addToCalendar(key){
   const s = CONFIG.stage[key];
   const start = toIcsDate(s.when);
-  const end = toIcsDate(new Date(new Date(s.when).getTime()+60*60000).toISOString());
-  const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${s.title} - Coach Dedy Dahlan @ IOITE 2026\nDTSTART:${start}\nDTEND:${end}\nLOCATION:Panggung Utama IOITE, NICE PIK 2\nDESCRIPTION:Booth Mitologi Inspira 8A92\nEND:VEVENT\nEND:VCALENDAR`;
+  const end = toIcsDate(s.end);
+  const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nUID:${key}-ioite2026@mitologiinspira.com\nDTSTAMP:${toIcsDate(new Date().toISOString())}\nSUMMARY:${s.title} @ IOITE 2026\nDTSTART:${start}\nDTEND:${end}\nLOCATION:Main Stage IOITE, NICE PIK 2\nDESCRIPTION:${s.note}. Booth Mitologi Inspira 8A92\nEND:VEVENT\nEND:VCALENDAR`;
   const blob = new Blob([ics], { type:"text/calendar" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob); a.download = key+"-ioite.ics"; a.click();
