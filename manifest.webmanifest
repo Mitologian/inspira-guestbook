@@ -1,13 +1,13 @@
 {
   "name": "Mitologi Inspira",
-  "short_name": "Mitologi",
+  "short_name": "Mitologi Inspira",
   "description": "Program lima fase dari diagnostik organisasi hingga kemitraan pembelajaran berkelanjutan.",
   "id": "/",
   "start_url": "/?src=app",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#F3F1EC",
+  "background_color": "#1A1A1A",
   "theme_color": "#1A1A1A",
   "lang": "id",
   "icons": [
