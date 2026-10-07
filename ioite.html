@@ -113,6 +113,18 @@ h2{font-size:21px;margin-bottom:8px}
   font-weight:600;font-size:13px;display:flex;align-items:center;justify-content:center;gap:5px;text-decoration:none;color:var(--ink)}
 .stage .actions .primary{background:#F04124;color:#fff;border-color:#F04124}
 
+/* video mitra */
+.pvideo{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;background:#1A1A1A;box-shadow:var(--shadow)}
+.pvideo img,.pvideo iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.pvideo button{position:absolute;inset:0;width:100%;border:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.45));display:grid;place-items:center}
+.pvideo .play{width:52px;height:52px;border-radius:50%;background:#F04124;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.35);transition:transform .15s}
+.pvideo button:active .play{transform:scale(.94)}
+.pvideo .play svg{width:22px;height:22px;color:#fff}
+.pvideo.soon{display:grid;place-items:center;text-align:center;color:#C9CED4;font-size:13px;gap:10px;align-content:center}
+.pvideo.soon .play{margin:0 auto;opacity:.5}
+.yt-alt{display:block;text-align:center;font-size:13px;color:var(--muted);margin-top:8px}
+.yt-alt[hidden]{display:none}
+
 /* voucher */
 .voucher{padding:20px;text-align:center}
 .voucher .daytab{margin-bottom:16px}
@@ -326,6 +338,16 @@ footer.wrap{padding:20px 22px calc(40px + env(safe-area-inset-bottom));text-alig
     </div>
   </section>
 
+  <section id="partnersSection">
+    <div class="eyebrow">Video</div>
+    <h2>Our Strategic Partners</h2>
+    <div class="pvideo soon" id="partnersVideo">
+      <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.2 5.6v12.8a.8.8 0 0 0 1.2.7l10.2-6.4a.8.8 0 0 0 0-1.4L9.4 4.9a.8.8 0 0 0-1.2.7Z"/></svg></span>
+      <span>Video segera hadir</span>
+    </div>
+    <a class="yt-alt" id="partnersAlt" href="#" target="_blank" rel="noopener" hidden>Video tidak tampil? Tonton di YouTube</a>
+  </section>
+
   <section>
     <div class="eyebrow">Voucher Khusus Expo</div>
     <h2>Diskon Spesial Lakon Profile Report</h2>
@@ -451,6 +473,8 @@ const CONFIG = {
   sheetEndpoint: "https://script.google.com/macros/s/AKfycbxEXzn42eDTramxXt9sgWNtynJ6jaZiSbDhK_kEfBIHdTCV2zizBs-HtmRA1VoYRl943A/exec",// pakai URL Apps Script yang sama dengan index.htmlTautan Web App Apps Script penerima guestbook
   // QR, tombol, dan kode voucher mengikuti booth.html?hari=N (kode IOITE-D1 sampai IOITE-D4 diatur di booth.html)
   voucherPage: "booth.html",
+  // Video "Our Strategic Partners": tempel link YouTube lengkap atau ID videonya. Kosong = tampil "Video segera hadir".
+  partnersVideo: "",
   // Jadwal Main Stage. Jika berubah, ganti when/end di sini dan teks jam pada kartu di bagian Main Stage.
   stage: {
     synergy:  { title:"Team Synergy and Personality",                 when:"2026-10-10T16:30:00+07:00", end:"2026-10-10T17:15:00+07:00", note:"Seminar bersama Coach Dedy Dahlan" },
@@ -653,6 +677,27 @@ function addToCalendar(key){
   a.href = URL.createObjectURL(blob); a.download = key+"-ioite.ics"; a.click();
 }
 $$('[data-cal]').forEach(btn => btn.addEventListener("click", () => { if(!btn.disabled) addToCalendar(btn.dataset.cal); }));
+
+/* ---- video Our Strategic Partners (dimuat hanya saat diketuk, hemat kuota) ---- */
+(function(){
+  const m = String(CONFIG.partnersVideo || "").trim().match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/|\/live\/)([\w-]{11})|^([\w-]{11})$/);
+  const id = m && (m[1] || m[2]);
+  if(!id) return;
+  const box = $("#partnersVideo");
+  box.className = "pvideo";
+  box.innerHTML = '<img alt="Video Our Strategic Partners" loading="lazy"><button aria-label="Putar video Our Strategic Partners"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.2 5.6v12.8a.8.8 0 0 0 1.2.7l10.2-6.4a.8.8 0 0 0 0-1.4L9.4 4.9a.8.8 0 0 0-1.2.7Z"/></svg></span></button>';
+  box.querySelector("img").src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+  const alt = $("#partnersAlt"); alt.href = `https://youtu.be/${id}`; alt.hidden = false;
+  box.querySelector("button").addEventListener("click", () => {
+    const f = document.createElement("iframe");
+    f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
+    f.title = "Video Our Strategic Partners";
+    f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    f.referrerPolicy = "strict-origin-when-cross-origin";
+    f.allowFullscreen = true;
+    box.replaceChildren(f);
+  });
+})();
 
 /* ---- voucher (QR, tombol, dan kode sama-sama mengikuti hari yang dipilih, menuju booth.html?hari=N) ---- */
 const VDAY_LABEL = { 1:"Hari 1 · 8 Okt", 2:"Hari 2 · 9 Okt", 3:"Hari 3 · 10 Okt", 4:"Hari 4 · 11 Okt" };
